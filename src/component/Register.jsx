@@ -20,7 +20,7 @@ const Register = () => {
 
     e.preventDefault()
 
-    const datas = JSON.parse(localStorage.getItem("users")) || []
+    const datas = JSON.parse(localStorage.getItem("users")) 
  
     datas.push(formdata)   
 
@@ -28,7 +28,7 @@ const Register = () => {
 
     alert('Successfully Registered')
 
-    navigation('./login')
+    navigation('/login')
 
     setFormData({fullname:"",email:"",email:"",password:""})
 
@@ -100,10 +100,7 @@ const Register = () => {
                    Create Account Now
                 </button>
               </div>
-               <div className="mt-8 text-center">
-              <p className="text-white/80 text-sm">
-              </p>
-            </div>
+               
             </form>
             
            

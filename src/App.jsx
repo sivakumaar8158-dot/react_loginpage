@@ -11,9 +11,9 @@ const App = () => {
     <header className="bg-linear-to-r from-blue-600 to-purple-700 shadow-2xl">
   <div className="container mx-auto px-6 py-6">
     <h1 className="text-4xl font-bold text-white text-center drop-shadow-lg ">
-      Register
+      Login Using React
     </h1>
-    <div className="w-24 h-1 bg-linear-to-r from-yellow-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
+    <div className="w-50 h-1 bg-linear-to-r from-yellow-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
   </div>
 </header>
 

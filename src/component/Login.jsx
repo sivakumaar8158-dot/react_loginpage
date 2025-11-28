@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom"
 
 const Login = () => {
 
-   const [logindatas,setloginDatas] = useState({email:"",password:""})
+   const [loginDatas,setloginDatas] = useState({email:"",password:""})
    const navigation = useNavigate()
 
    const loginhandlechange = (e) =>{
 
-    setloginDatas({...logindatas,[e.target.name]:e.target.value})
+    setloginDatas({...loginDatas,[e.target.name]:e.target.value})
      
    }
 
@@ -18,7 +18,7 @@ const Login = () => {
 
     const userdatas = JSON.parse(localStorage.getItem("users"))
 
-    const finding = userdatas.find((x)=>x.email === logindatas.email && x.password === logindatas.password)
+    const finding = userdatas.find((x)=>x.email === loginDatas.email && x.password === loginDatas.password)
 
     if(finding){
 
@@ -53,8 +53,8 @@ const Login = () => {
               <p className="text-white/80 text-lg">Sign in to your account</p>
             </div>
             
-            <form className="space-y-6">
-              <div className="group"> onSubmit={loginhandleSubmit}
+            <form onSubmit={loginhandleSubmit} className="space-y-6">
+              <div className="group"> 
                 <label className="block text-sm font-semibold text-white/90 mb-3 ml-1">Email Address</label>
                 <input 
                   type="email" 
@@ -83,15 +83,6 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            
-            <div className="mt-8 text-center">
-              <p className="text-white/80 text-sm">
-                Don't have an account?{" "}
-                <a href="#" className="text-white font-semibold hover:text-green-300 transition-colors duration-200 underline">
-                  Sign up here
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </div>
