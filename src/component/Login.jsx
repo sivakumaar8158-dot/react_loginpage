@@ -1,6 +1,41 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 const Login = () => {
 
+   const [logindatas,setloginDatas] = useState({email:"",password:""})
+   const navigation = useNavigate()
 
+   const loginhandlechange = (e) =>{
+
+    setloginDatas({...logindatas,[e.target.name]:e.target.value})
+     
+   }
+
+   const loginhandleSubmit = (e) => {
+
+    e.preventDefault()
+
+    const userdatas = JSON.parse(localStorage.getItem("users"))
+
+    const finding = userdatas.find((x)=>x.email === logindatas.email && x.password === logindatas.password)
+
+    if(finding){
+
+      localStorage.setItem("currentuser",JSON.stringify(finding))
+
+      navigation("/dashboard")
+      
+      setloginDatas({email:"",password:""})
+
+    }else{
+      alert("Please provide Correct Details")
+    }
+
+
+   }
+
+   
 
     
   return (
@@ -19,11 +54,11 @@ const Login = () => {
             </div>
             
             <form className="space-y-6">
-              <div className="group">
+              <div className="group"> onSubmit={loginhandleSubmit}
                 <label className="block text-sm font-semibold text-white/90 mb-3 ml-1">Email Address</label>
                 <input 
                   type="email" 
-                  name="email"   
+                  name="email"   value={loginDatas.email} onChange={loginhandlechange}
                   placeholder="Enter your email address"  
                   className="w-full px-5 py-4 bg-white/20 border border-white/30 rounded-2xl focus:bg-white focus:text-gray-800 focus:border-white focus:ring-4 focus:ring-white/30 text-white placeholder-white/60 transition-all duration-300 outline-none backdrop-blur-sm"   
                 />
@@ -33,7 +68,7 @@ const Login = () => {
                 <label className="block text-sm font-semibold text-white/90 mb-3 ml-1">Password</label>
                 <input 
                   type="password" 
-                  name="password"   
+                  name="password"   value={loginDatas.password} onChange={loginhandlechange}
                   placeholder="Enter your password"   
                   className="w-full px-5 py-4 bg-white/20 border border-white/30 rounded-2xl focus:bg-white focus:text-gray-800 focus:border-white focus:ring-4 focus:ring-white/30 text-white placeholder-white/60 transition-all duration-300 outline-none backdrop-blur-sm"   
                 />
